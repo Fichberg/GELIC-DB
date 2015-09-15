@@ -1,0 +1,21 @@
+Considerações:
+
+ - Vou começar em apenas um arquivo de texto a primeira parte, mas depois podemos passar para um arquivo com formatação, se acharem necessário.
+
+- Estes requisitos que escrevi são apenas especulação. Seria interessante conversar com alguém do GELIC para saber o que eles realmente precisam
+
+Requisitos:
+
+O sistema deve armazenar e disponibilizar dados linguísticos do grupo GELIC, estes dados consistem em arquivos de vídeo e áudio coletados por pesquisadores. Estes arquivos devem ter as seguintes informações:
+  
+- Local da coleta do dado (país, região, etc)
+- Data da coleta
+- Pessoa que coletou
+- Transcrição
+- Pessoa que fez a transcrição
+- Identificação dos entrevistados (nesse caso o nome da pessoa é substituido por um código para preservar a sua privacidade)
+- Definição se o dado é de domínio públiico, ou apenas acessados pelo grupo do GELIC
+
+O sistema também presisará guardar algumas informações pessoais de quem coleta e transcreve os dados, como o nome (obrigatório) e o cpf (faz sentido? Se sim, obrigatório) da pessoa, se ela faz ou não parte do grupo GELIC, email e senha caso ela acesse o sistema.
+
+O uso do sistema será principalmente para a submissão e recuperação desses dados de forma prática e organizada,
