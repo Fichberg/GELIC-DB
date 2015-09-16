@@ -3,9 +3,9 @@ A database project for IME-USP MAC0439 - Database Laboratory course.
 
 ## TODO List
 
-- [ ] **Definição dos requisitos funcionais e de dados**
-    - [ ] O que o sistema faz
-    - [ ] Quem interage com ele
+- [x] **Definição dos requisitos funcionais e de dados**
+    - [x] O que o sistema faz
+    - [x] Quem interage com ele
     - [ ] Quais são os dados envolvidos
     - [ ] Listar as operações de dados frequentes
 - [ ] **Projeto conceitual do banco de dados relacional**
