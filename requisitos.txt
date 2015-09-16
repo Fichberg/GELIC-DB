@@ -1,6 +1,6 @@
 Considerações:
 
- - Vou começar em apenas um arquivo de texto a primeira parte, mas depois podemos passar para um arquivo com formatação, se acharem necessário.
+- Vou começar em apenas um arquivo de texto a primeira parte, mas depois podemos passar para um arquivo com formatação, se acharem necessário.
 
 - Estes requisitos que escrevi são apenas especulação. Seria interessante conversar com alguém do GELIC para saber o que eles realmente precisam
 
