@@ -1,20 +1,15 @@
-Considerações:
+### Considerações
 
-- Vou começar em apenas um arquivo de texto a primeira parte, mas depois podemos passar para um arquivo com formatação, se acharem necessário.
+Por mim (Vinícius) a gente deixa os requisitos em markdown mesmo. E podemos gerar o PDF antes de entregar para facilitar a visualização de quem for corrigir.
 
-Requisitos:
+### Requisitos
 
-O sistema deve armazenar e disponibilizar dados linguísticos do grupo GELIC, estes dados consistem em arquivos de vídeo e áudio coletados por pesquisadores. Estes arquivos devem ter as seguintes informações:
-  
-- Local da coleta do dado (país, região, etc)
-- Data da coleta
-- Pessoa que coletou
-- Transcrição
-- Pessoa que fez a transcrição
-- Identificação dos entrevistados (nesse caso o nome da pessoa é substituido por um código para preservar a sua privacidade)
-- Definição se o dado é de domínio público, ou apenas acessados pelo grupo do GELIC
+O sistema deve armazenar e disponibilizar dados linguísticos do grupo GELIC, estes dados consistem em arquivos de vídeo e áudio coletados por pesquisadores. Os arquivos de vídeo serão armazenados em servidores externos, e os arquivos de áudio serão guardados no banco de dados.
 
-Os arquivos de vídeo serão armazenados em servidores externos, e os arquivos de áudio serão guardados no banco de dados.
+O banco de dados consiste de dados em duas categorias:
+
+- Uma mostra que ficará disponível ao público em geral, ou seja, poderá ser acessada por qualquer pessoa que acessar o site
+- A maioria dos dados ficará restrita aos membros do GELIC que terão acesso aos dados por meio do sistema de login, com senha e nome de usuário atribuídos pelo(s) administrador(s) do site.
 
 Alguns membros do grupo terão a função de administradores, somente esses poderão fazer o seguinte:
 
@@ -24,7 +19,8 @@ Alguns membros do grupo terão a função de administradores, somente esses pode
 
 As transcrições serão feitas por vários membros do grupo, toda revisão será feita por outro membro do grupo e 
 cada transcrição deverá ser identificadas com: 
- - O país onde foi coletado o áudio 
+
+ - A cidade e o país onde foi coletado o áudio 
  - A língua falada no áudio 
  - Quem coletou o áudio
  - Quem fez a transcrição
