@@ -2,8 +2,6 @@ Considerações:
 
 - Vou começar em apenas um arquivo de texto a primeira parte, mas depois podemos passar para um arquivo com formatação, se acharem necessário.
 
-- Estes requisitos que escrevi são apenas especulação. Seria interessante conversar com alguém do GELIC para saber o que eles realmente precisam
-
 Requisitos:
 
 O sistema deve armazenar e disponibilizar dados linguísticos do grupo GELIC, estes dados consistem em arquivos de vídeo e áudio coletados por pesquisadores. Estes arquivos devem ter as seguintes informações:
@@ -14,8 +12,25 @@ O sistema deve armazenar e disponibilizar dados linguísticos do grupo GELIC, es
 - Transcrição
 - Pessoa que fez a transcrição
 - Identificação dos entrevistados (nesse caso o nome da pessoa é substituido por um código para preservar a sua privacidade)
-- Definição se o dado é de domínio públiico, ou apenas acessados pelo grupo do GELIC
+- Definição se o dado é de domínio público, ou apenas acessados pelo grupo do GELIC
 
-O sistema também presisará guardar algumas informações pessoais de quem coleta e transcreve os dados, como o nome (obrigatório) e o cpf (faz sentido? Se sim, obrigatório) da pessoa, se ela faz ou não parte do grupo GELIC, email e senha caso ela acesse o sistema.
+Os arquivos de vídeo serão armazenados em servidores externos, e os arquivos de áudio serão guardados no banco de dados.
 
-O uso do sistema será principalmente para a submissão e recuperação desses dados de forma prática e organizada,
+Alguns membros do grupo terão a função de administradores, somente esses poderão fazer o seguinte:
+
+- Alimentar o site com as transcrições, áudios e vídeos
+- Somente eles poderão alterar o conteúdo
+- Atribuir senha e nome de usuário aos membros do grupo
+
+As transcrições serão feitas por vários membros do grupo, toda revisão será feita por outro membro do grupo e 
+cada transcrição deverá ser identificadas com: 
+ - O país onde foi coletado o áudio 
+ - A língua falada no áudio 
+ - Quem coletou o áudio
+ - Quem fez a transcrição
+ - Quem fez a revisão
+ - O tipo de entrevista
+
+Logo, ao criar o banco de dados, deverá ser provido campos para inserir essas informações. Um player online que faz a ligação entre o áudio e a transcrição correspondente – assim, o usuário poderá ler e acompanhar o texto transcrito ao mesmo tempo.
+
+O sistema também presisará guardar algumas informações pessoais de quem coleta e transcreve os dados, como o nome (obrigatório) e o cpf da pessoa, se ela faz ou não parte do grupo GELIC, email e senha caso ela acesse o sistema.
