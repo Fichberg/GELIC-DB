@@ -1,0 +1,44 @@
+Notas quanto a escolha do BD NoSQL.
+
+Dos requisitos levantados no item 1 desta primeira fase do projeto
+de MAC0439, o modelo que parece satisfazer melhor a nossa demanda é
+o de Chave-Valor. Porque? Bom, da fase 1, percebemos que guardar os arquivos
+de media pelo BD tradional SQL não é a melhor escolha. Assim, no nosso modelo,
+temos maneiras de referenciar um vídeo em um servidor externo, ou um áudio.
+Como precisamos de poucas operações para isso e sabemos exatamente a forma que
+queremos resgatar estes dados (media), o modelo chave-valor se apresenta como o
+mais indicado.
+No caso de resgatar um áudio, a chave poderia ser, conforme o modelo conceitual,
+um código único, que identifica univocamente a media. Já no caso do vídeo,
+a chave seria o seu link. Note que ambos poderiam também ser referenciados pelos
+seus ids, não representado no modelo conceitual.
+
+
+      BD SQL        |        BD NoSQL Chave-Valor
+                    |
+                    |
+                    |
+                ---------
+                | Audio |               ---------
+                |-------|               | Audio |
+    |---------<>|+Código| -----------<> |_______|
+    |           ---------
+---------           |
+| Media |           |
+---------           |
+    |               |
+    |           ---------               ---------
+    |---------<>| Video |               | Video |
+                |-------| -----------<> |_______|
+                |+Link  |
+                ---------
+                    |
+                    |
+                    |
+                    |
+                    | (s)
+
+
+O esquema acima mostra, de maneira simplificada, uma possível idéia
+para implementar. Note que e linha vertical (s) 'separa' ambos os BDs,
+mostrando onde é que o BD NoSQL deverá se comunicar com o BD SQL.
