@@ -1,7 +1,3 @@
-### Considerações
-
-Por mim (Vinícius) a gente deixa os requisitos em markdown mesmo. E podemos gerar o PDF antes de entregar para facilitar a visualização de quem for corrigir.
-
 ### Requisitos
 
 O sistema deve armazenar e disponibilizar dados linguísticos do grupo GELIC, estes dados consistem em arquivos de vídeo e áudio coletados por pesquisadores. Os arquivos de vídeo serão armazenados em servidores externos, e os arquivos de áudio serão guardados no banco de dados.
