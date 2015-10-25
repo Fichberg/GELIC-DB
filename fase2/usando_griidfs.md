@@ -47,7 +47,7 @@ db.fs.files.find()
 ```
 Na resposta virá as seguintes informações:
 
-```json
+```bson
 { 
     "_id" : ObjectId("562d13c4879fda2760000001"), 
     "chunkSize" : 261120, 
