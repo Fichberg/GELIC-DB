@@ -74,5 +74,5 @@ Pronto, o arquivo foi recuperado.
 
 ### Considerações finais
 
-Na aplicação real não utilizaremos estes comandos do terminal, mas sim drivers de mongo com suporte para GridFs para a linguagém de nossa aplicação.
+Na aplicação real não utilizaremos estes comandos do terminal, mas sim drivers de mongo com suporte para GridFs para a linguagem de nossa aplicação.
 
