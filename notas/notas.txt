@@ -1,0 +1,72 @@
+Notas quanto a escolha do BD NoSQL.
+
+Dos requisitos levantados no item 1 desta primeira fase do projeto
+de MAC0439, o modelo que parece satisfazer melhor a nossa demanda é
+o de Chave-Valor. Porque? Bom, da fase 1, percebemos que guardar os arquivos
+de media pelo BD tradional SQL não é a melhor escolha. Assim, no nosso modelo,
+temos maneiras de referenciar um vídeo em um servidor externo, ou um áudio.
+Como precisamos de poucas operações para isso e sabemos exatamente a forma que
+queremos resgatar estes dados (media), o modelo chave-valor se apresenta como o
+mais indicado dentro as opções de sistema NoSQL.
+No caso de resgatar um áudio, a chave poderia ser, conforme o modelo conceitual,
+um código único, que identifica univocamente a media. Já no caso do vídeo,
+a chave seria o seu link. Note que ambos poderiam também ser referenciados pelos
+seus ids, não representado no modelo conceitual.
+                    |
+                    |
+      BD SQL        |        BD NoSQL Chave-Valor
+                ---------
+                |Transcr|
+                |-------|               ---------------
+    |---------<>|+Código|-------------<>| Transcrição |
+    |           |-------|               ---------------
+    |               |
+    |               |
+    |           ---------
+    |           | Audio |
+    |           |-------|               ---------
+    |---------<>|+Código|-------------<>| Audio |
+    |           ---------               ---------
+---------           |
+| Media |           |
+---------           |
+    |               |
+    |           ---------
+    |---------<>| Video |               ---------
+                |-------|-------------<>| Video |
+                |+Link  |               ---------
+                ---------
+                    |
+                    |
+                    |
+                    |
+                    | (s)
+
+
+O esquema acima mostra, de maneira simplificada, uma possível idéia
+para implementar. Note que e linha vertical (s) 'separa' ambos os BDs,
+mostrando onde é que o BD NoSQL deverá se comunicar com o BD SQL.
+
+Razões para usar o BD NoSQL:
+Apesar de a principio acreditarmos que é um projeto de pequeno porte e a partir
+dessa visão, escalabilidade não ser um grande problema, é importante
+considerarmos a evolução do software de tal forma que, se amanhã os responsáveis
+pelo GELIC decidirem aumentar o escopo do projeto e precisarem de uma maior escalabilidade,
+o projeto já terá uma arquitetura pronta para receber o upgrade, ao menos com relação
+ao armazenamente das mídias.
+
+Ainda, a estrutura de um sistema SQL não é a melhor forma que pensamos para o armazenamento
+da mídia. A principio, o que buscamos é algo relativamente simples: dado um identificador
+único para o item (i.e, uma chave), queremos retornar a mídia referenciada por ele (i.e. valor)
+com o seu formato original. Guardar mídia no formato original usando o SQL tradicional
+não parece razoável, eficiente e flexível.
+
+O Sistema de Banco de dados NoSQL escolhido por nós foi o Redis (REmote DIctionary Server). A
+página oficial do software pode ser encontrada em:
+
+http://redis.io/
+
+As razões da escolha foram que além de open-source ('Three clause BSD license'), o Redis
+aparentemente tem uma interface amigável e é fácil de usar.
+Ainda, pesquisamos também sobre seus concorrentes NoSQL e as reviews encontradas, em sua
+vasta maioria, apontavam o Redis como o favorito (e em segundo lugar, o MemcachedDB).
