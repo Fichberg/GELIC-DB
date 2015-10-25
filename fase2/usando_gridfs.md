@@ -3,7 +3,7 @@
 Neste tutorial vamos mostrar como faremos para guardar e acessar arquivos usando MongoDB
 ### Instalação
 
-Este tuorial segue os passos de instalação no Ubuntu 14.04, caso esteja em outro sistema operacional, veja a [Documentação Oficial](https://docs.mongodb.org/manual/installation/).
+Este tutorial segue os passos de instalação no Ubuntu 14.04, caso esteja em outro sistema operacional, veja a [Documentação Oficial](https://docs.mongodb.org/manual/installation/).
 
 O primeiro passo é informar o sistema de manutenção de pacotes o endereço do repositório do MongoDB:
 
@@ -47,7 +47,7 @@ db.fs.files.find()
 ```
 Na resposta virá as seguintes informações:
 
-```json
+```bson
 { 
     "_id" : ObjectId("562d13c4879fda2760000001"), 
     "chunkSize" : 261120, 
@@ -74,5 +74,5 @@ Pronto, o arquivo foi recuperado.
 
 ### Considerações finais
 
-Na aplicação real não utilizaremos estes comandos do terminal, mas sim drivers de mongo com suporte para GridFs para a linguagém de nossa aplicação.
+Na aplicação real não utilizaremos estes comandos do terminal, mas sim drivers de mongo com suporte para GridFs para a linguagem de nossa aplicação.
 
