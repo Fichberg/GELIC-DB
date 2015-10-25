@@ -67,7 +67,7 @@ create table cidades(
 
 create table transcricoes(
   id_midia int primary key references midias,
-  codigo int not null,
+  codigo varchar(100) not null,
   comentario text,
   nome_cidade varchar(50) not null,
   nome_pais varchar(50) not null,
@@ -76,7 +76,7 @@ create table transcricoes(
 
 create table audios(
   id_midia int primary key references midias,
-  codigo int not null
+  codigo varchar(100) not null
 );
 
 create table videos(
