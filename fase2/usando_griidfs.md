@@ -3,7 +3,7 @@
 Neste tutorial vamos mostrar como faremos para guardar e acessar arquivos usando MongoDB
 ### Instalação
 
-Este tuorial segue os passos de instalação no Ubuntu 14.04, caso esteja em outro sistema operacional, veja a [Documentação Oficial](https://docs.mongodb.org/manual/installation/).
+Este tutorial segue os passos de instalação no Ubuntu 14.04, caso esteja em outro sistema operacional, veja a [Documentação Oficial](https://docs.mongodb.org/manual/installation/).
 
 O primeiro passo é informar o sistema de manutenção de pacotes o endereço do repositório do MongoDB:
 
