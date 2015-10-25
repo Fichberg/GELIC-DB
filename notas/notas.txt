@@ -61,12 +61,9 @@ da mídia. A principio, o que buscamos é algo relativamente simples: dado um id
 com o seu formato original. Guardar mídia no formato original usando o SQL tradicional
 não parece razoável, eficiente e flexível.
 
-O Sistema de Banco de dados NoSQL escolhido por nós foi o Redis (REmote DIctionary Server). A
+O Sistema de Banco de dados NoSQL escolhido por nós foi o Couchbase Server. A
 página oficial do software pode ser encontrada em:
 
-http://redis.io/
+http://www.couchbase.com/nosql-databases/couchbase-server
 
-As razões da escolha foram que além de open-source ('Three clause BSD license'), o Redis
-aparentemente tem uma interface amigável e é fácil de usar.
-Ainda, pesquisamos também sobre seus concorrentes NoSQL e as reviews encontradas, em sua
-vasta maioria, apontavam o Redis como o favorito (e em segundo lugar, o MemcachedDB).
+Licença Apache 2.0: http://developer.couchbase.com/open-source-projects
