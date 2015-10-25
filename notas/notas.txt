@@ -61,9 +61,18 @@ da mídia. A principio, o que buscamos é algo relativamente simples: dado um id
 com o seu formato original. Guardar mídia no formato original usando o SQL tradicional
 não parece razoável, eficiente e flexível.
 
-O Sistema de Banco de dados NoSQL escolhido por nós foi o Couchbase Server. A
+O Sistema de Banco de dados NoSQL escolhido por nós foi o MongoDB. A
 página oficial do software pode ser encontrada em:
 
-http://www.couchbase.com/nosql-databases/couchbase-server
+https://docs.mongodb.org/manual/
 
-Licença Apache 2.0: http://developer.couchbase.com/open-source-projects
+Antes de escolhermos o Mongo, também testamos o Redis e o Couchbase Server. Nenhum
+deles resolveu os nossos problemas da forma que precisávamos.
+O primeiro tinha um aparente problema para escrita em disco para dados que tivessem um
+tamanho superior à memória RAM. Já o segundo, o código estava feito de tal forma que
+só conseguiamos trabalhar com arquivos de tamanho no máximo 20MB (e para mudar isso,
+seria necessário modificar o código fonte). Com o Mongo, ambos os problemas parecem ter
+sido solucionados (ao menos para os nossos testes) a partir do gridFS.
+
+A licença do mongo é GNU AGPL v3.0 (e eventuais drivers usados, se for o caso, Apache 2.0).
+O projeto GELIC, até onde sabemos, não será usado para meios comerciais.
