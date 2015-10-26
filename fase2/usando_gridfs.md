@@ -48,20 +48,24 @@ db.fs.files.find()
 Na resposta virá as seguintes informações:
 
 ```bson
-{ 
-    "_id" : ObjectId("562d13c4879fda2760000001"), 
-    "chunkSize" : 261120, 
-    "uploadDate" : ISODate("2015-10-25T17:39:18.130Z"), 
-    "length" : 77852672, 
-    "md5" : "43636b40941ef40693ca3e987ee0e15c", 
-    "filename" : "teste.mp3" 
+{
+    "_id" : ObjectId("562d13c4879fda2760000001"),
+    "chunkSize" : 261120,
+    "uploadDate" : ISODate("2015-10-25T17:39:18.130Z"),
+    "length" : 77852672,
+    "md5" : "43636b40941ef40693ca3e987ee0e15c",
+    "filename" : "teste.mp3"
 }
+
+Obs: o _id e o uploadDate não necessariamente serão os mesmos, mas os outras informações devem ser precisamente as mostradas acima.
 ```
 
 O conteúdo do áudio foi guardado nos chunks e não é muito fácil de ler (Como é esperado de um arquivo binário), mas se quisermos saber em quantos pedaços o aquivo foi quebrado para se acomodar na base podemos rodar o seguinte comando no shell do mongo:
 
 ```javascript
 db.fs.chunks.find({files_id:ObjectId("562d13c4879fda2760000001")}).count()
+
+Obs: caso tenha sido gerado outro _id na inserção, mude o argumento do comando acima para o id gerado na sua inserção
 ```
 
 Se quisermos recuperar o arquivo guardado podemos usar de novo o *mongofiles* executando o seguinte comando no terminal:
@@ -70,9 +74,23 @@ Se quisermos recuperar o arquivo guardado podemos usar de novo o *mongofiles* ex
 $ mongofiles get_id 'ObjectId("562d13c4879fda2760000001")'
 ```
 
+Se o comando acima falhar, tente recuperá-lo pelo nome usando o comando abaixo
+Obs: é conhecido por nós o fato de que diferentes arquivos podem ter mesmo nome,
+portanto essa não é a maneira mais geral que pretendemos usar para recuperar os arquivos a priori.
+
+```bash
+$ mongofiles get teste.mp3
+```
+
 Pronto, o arquivo foi recuperado.
+
+Por fim, para remover o arquivo do BD NoSQL, você pode usar o seguinte comando:
+ATENÇÃO! O comando abaixo removerá todos os arquivos do BD com o nome teste.mp3
+
+```bash
+$ mongofiles delete teste.mp3
+```
 
 ### Considerações finais
 
 Na aplicação real não utilizaremos estes comandos do terminal, mas sim drivers de mongo com suporte para GridFs para a linguagem de nossa aplicação.
-
