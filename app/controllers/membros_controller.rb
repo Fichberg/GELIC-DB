@@ -69,6 +69,6 @@ class MembrosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def membro_params
-      params.require(:membro).permit(:email, :senha, :nome, :login, :data_criacao, :email_admin)
+      params.require(:membro).permit(:email, :senha, :senha_confirmation, :nome, :login, :data_criacao, :email_admin)
     end
 end
