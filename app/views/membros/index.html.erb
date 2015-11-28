@@ -1,0 +1,37 @@
+<h1>Listing membros</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Senha</th>
+      <th>Nome</th>
+      <th>Login</th>
+      <th>Data criacao</th>
+      <th>Email admin</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @membros.each do |membro| %>
+      <tr>
+        <td><%= membro.email %></td>
+        <td><%= membro.senha %></td>
+        <td><%= membro.nome %></td>
+        <td><%= membro.login %></td>
+        <td><%= membro.data_criacao %></td>
+        <td><%= membro.email_admin %></td>
+        <td><%= link_to 'Show', membro %></td>
+        <td><%= link_to 'Edit', edit_membro_path(membro) %></td>
+        <td><%= link_to 'Destroy', membro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Membro', new_membro_path %>
