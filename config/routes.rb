@@ -1,5 +1,5 @@
 GELICDb::Application.routes.draw do
-  resources :membros
+  resources :membros, :id => /[^\/]+/
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
