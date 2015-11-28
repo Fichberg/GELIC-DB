@@ -1,0 +1,45 @@
+<%= form_for(@midia) do |f| %>
+  <% if @midia.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@midia.errors.count, "error") %> prohibited this midia from being saved:</h2>
+
+      <ul>
+      <% @midia.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo %><br>
+    <%= f.text_field :tipo %>
+  </div>
+  <div class="field">
+    <%= f.label :duracao %><br>
+    <%= f.text_field :duracao %>
+  </div>
+  <div class="field">
+    <%= f.label :data_gravacao %><br>
+    <%= f.datetime_select :data_gravacao %>
+  </div>
+  <div class="field">
+    <%= f.label :data_submissao %><br>
+    <%= f.datetime_select :data_submissao %>
+  </div>
+  <div class="field">
+    <%= f.label :email_coletor %><br>
+    <%= f.text_field :email_coletor %>
+  </div>
+  <div class="field">
+    <%= f.label :email_admin %><br>
+    <%= f.text_field :email_admin %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
