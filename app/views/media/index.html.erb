@@ -1,4 +1,4 @@
-<h1>Mídias</h1>
+<h1>Media</h1>
 
 <table>
   <tbody>
@@ -30,7 +30,7 @@
           <td><%= medium.email_admin %></td>
           <td><%= link_to 'Show', medium %></td>
           <td><%= link_to 'Edit', edit_medium_path(medium) %></td>
-          <td><%= link_to 'Destroy', medium, method: :delete, data: { confirm: 'Está certo disso?' } %></td>
+          <td><%= link_to 'Destroy', medium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     <% else %>
@@ -41,4 +41,4 @@
 
 <br>
 
-<%= link_to 'Nova Mídia', new_medium_path %>
+<%= link_to 'New Medium', new_medium_path %>
