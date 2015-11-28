@@ -1,0 +1,44 @@
+<h1>Mídias</h1>
+
+<table>
+  <tbody>
+    <% unless @midias.empty? %>
+
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Tipo</th>
+        <th>Duracao</th>
+        <th>Data de Gravação</th>
+        <th>Data de Submissão</th>
+        <th>Email Coletor</th>
+        <th>Email Admin</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+      <% @midias.each do |midia| %>
+        <tr>
+          <td><%= midia.nome %></td>
+          <td><%= midia.tipo %></td>
+          <td><%= midia.duracao %></td>
+          <td><%= midia.data_gravacao %></td>
+          <td><%= midia.data_submissao %></td>
+          <td><%= midia.email_coletor %></td>
+          <td><%= midia.email_admin %></td>
+          <td><%= link_to 'Show', midia %></td>
+          <td><%= link_to 'Edit', edit_midia_path(midia) %></td>
+          <td><%= link_to 'Destroy', midia, method: :delete, data: { confirm: 'Está certo disso?' } %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      Nenhuma midia encontrada
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Midia', new_midia_path %>
