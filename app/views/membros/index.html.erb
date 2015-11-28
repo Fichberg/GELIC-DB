@@ -25,8 +25,10 @@
         <td><%= membro.data_criacao %></td>
         <td><%= membro.email_admin %></td>
         <td><%= link_to 'Show', membro %></td>
-        <td><%= link_to 'Edit', edit_membro_path(membro) %></td>
-        <td><%= link_to 'Destroy', membro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% unless membro.is_admin %>
+          <td><%= link_to 'Edit', edit_membro_path(membro) %></td>
+          <td><%= link_to 'Destroy', membro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

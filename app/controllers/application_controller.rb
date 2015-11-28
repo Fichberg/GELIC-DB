@@ -6,10 +6,10 @@ class ApplicationController < ActionController::Base
 
 
   def current_user
-    @current_user ||= Membro.find(session[:membro_email]) if session[:membro_email]
+    @current_user ||= Membro.find(session[:membro_id]) if session[:membro_id]
   end
   helper_method :current_user
-  
+
   private
 
   def require_login

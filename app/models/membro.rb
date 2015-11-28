@@ -1,7 +1,7 @@
 require 'digest/md5'
 
 class Membro < ActiveRecord::Base
-  self.primary_key = 'email'
+  self.primary_key = 'id'
 
   validates_confirmation_of :senha
   validates_presence_of :senha_confirmation
@@ -13,7 +13,7 @@ class Membro < ActiveRecord::Base
   end
 
   def self.authenticate(email, password)
-    membro = Membro.find(email)
+    membro = Membro.find_by_email(email)
     if membro && membro.senha == Digest::MD5.hexdigest(password)
       membro
     else

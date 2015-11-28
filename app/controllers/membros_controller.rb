@@ -10,6 +10,7 @@ class MembrosController < ApplicationController
   # GET /membros/1
   # GET /membros/1.json
   def show
+    membro = Membro.find(params[:id])
   end
 
   # GET /membros/new
@@ -65,6 +66,7 @@ class MembrosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_membro
       @membro = Membro.find(params[:id])
+      p @membro
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

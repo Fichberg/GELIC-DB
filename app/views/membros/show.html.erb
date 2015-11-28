@@ -30,5 +30,7 @@
   <%= @membro.email_admin %>
 </p>
 
-<%= link_to 'Edit', edit_membro_path(@membro) %> |
+<% unless @membro.is_admin %>
+  <%= link_to 'Edit', edit_membro_path(@membro) %>
+<% end %>
 <%= link_to 'Back', membros_path %>

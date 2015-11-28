@@ -3,8 +3,8 @@ development:
   encoding: utf8
   database: gelic
   pool: 5
-  username: postgres
-  password: gelicgelic
+  username: gelic
+  password: gelic
   host: 127.0.0.1
 
 test: &TEST
@@ -12,7 +12,7 @@ test: &TEST
   encoding: utf8
   database: gelic
   pool: 5
-  username: 
+  username:
   password:
 
 production:
@@ -20,8 +20,8 @@ production:
   encoding: utf8
   database: gelic
   pool: 5
-  username: 
-  password:
+  username: gelic
+  password: gelic
 
 cucumber:
   <<: *TEST
