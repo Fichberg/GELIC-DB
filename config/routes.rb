@@ -1,6 +1,9 @@
 GELICDb::Application.routes.draw do
   get '/' => 'home#index'
   resources :membros, :id => /[^\/]+/
+  get "/log-in" => "sessions#new"
+  post "/log-in" => "sessions#create"
+  get "/log-out" => "sessions#destroy", as: :log_out
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
