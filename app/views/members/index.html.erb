@@ -1,0 +1,39 @@
+<h1>GELIC Members</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Senha</th>
+      <th>Nome</th>
+      <th>Login</th>
+      <th>Data criacao</th>
+      <th>Email admin</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.email %></td>
+        <td><%= member.senha %></td>
+        <td><%= member.nome %></td>
+        <td><%= member.login %></td>
+        <td><%= member.data_criacao %></td>
+        <td><%= member.email_admin %></td>
+        <td><%= link_to 'Show', member %></td>
+        <% unless member.is_admin %>
+          <td><%= link_to 'Edit', edit_member_path(member) %></td>
+          <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Member', new_member_path %>

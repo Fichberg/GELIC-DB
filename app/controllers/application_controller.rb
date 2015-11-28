@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
 
   def current_user
-    @current_user ||= Membro.find(session[:membro_id]) if session[:membro_id]
+    @current_user ||= Member.find(session[:member_id]) if session[:member_id]
   end
   helper_method :current_user
 

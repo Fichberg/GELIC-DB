@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @membro = current_user
+    @member = current_user
   end
 end

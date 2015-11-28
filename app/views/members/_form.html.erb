@@ -1,10 +1,10 @@
-<%= form_for(@membro) do |f| %>
-  <% if @membro.errors.any? %>
+<%= form_for(@member) do |f| %>
+  <% if @member.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@membro.errors.count, "error") %> prohibited this membro from being saved:</h2>
+      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>
 
       <ul>
-      <% @membro.errors.full_messages.each do |msg| %>
+      <% @member.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

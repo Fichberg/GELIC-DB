@@ -2,10 +2,10 @@ class SessionsController < ApplicationController
   skip_before_filter :require_login
 
   def create
-    @membro = Membro.authenticate(params[:email], params[:senha])
-    if @membro
+    @member = Member.authenticate(params[:email], params[:senha])
+    if @member
       flash[:notice] = "You've been logged in."
-      session[:membro_id] = @membro.id
+      session[:member_id] = @member.id
       redirect_to "/"
     else
       flash[:alert] = "There was a problem logging you in."
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:membro_id] = nil
+    session[:member_id] = nil
     flash[:notice] = "You've been logged out successfully."
     redirect_to "/"
   end

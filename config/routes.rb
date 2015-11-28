@@ -1,6 +1,6 @@
 GELICDb::Application.routes.draw do
   get '/' => 'home#index'
-  resources :membros, :id => /[^\/]+/
+  resources :members, :id => /[^\/]+/
   resources :media, :id => /[^\/]+/
   get "/log-in" => "sessions#new"
   post "/log-in" => "sessions#create"
