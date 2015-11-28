@@ -1,4 +1,5 @@
 GELICDb::Application.routes.draw do
+  get '/' => 'home#index'
   resources :membros, :id => /[^\/]+/
 
   # The priority is based upon order of creation: first created -> highest priority.
