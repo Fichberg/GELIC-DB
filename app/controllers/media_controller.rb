@@ -25,6 +25,7 @@ class MediaController < ApplicationController
   # POST /media.json
   def create
     @medium = Medium.new(medium_params)
+    @medium.email_admin = @current_user.email
 
     respond_to do |format|
       if @medium.save
@@ -69,6 +70,6 @@ class MediaController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def medium_params
-      params.require(:medium).permit(:email, :senha, :nome, :login, :data_criacao, :email_admin)
+      params.require(:medium).permit(:tipo, :nome, :duracao, :email_coletor, :data_gravacao, :data_submissao)
     end
 end
