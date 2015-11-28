@@ -10,6 +10,8 @@
 <%= link_to('logout', '/log-out') if current_user %>
 <%= '|' if current_user %>
 <%= link_to('membros', '/membros') if current_user %>
+<%= '|' if current_user %>
+<%= link_to('midias', '/midias') if current_user %>
 <%= yield %>
 
 </body>
