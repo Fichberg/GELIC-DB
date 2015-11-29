@@ -3,6 +3,7 @@ GELICDb::Application.routes.draw do
   resources :members, :id => /[^\/]+/
   resources :media, :id => /[^\/]+/
   resources :idioms, path: '/media/:id_midia/idioms', only: [:new, :create, :destroy]
+  resources :countries, path: '/media/:id_midia/countries', only: [:new, :show, :create, :destroy]
   get "/log-in" => "sessions#new"
   post "/log-in" => "sessions#create"
   get "/log-out" => "sessions#destroy", as: :log_out

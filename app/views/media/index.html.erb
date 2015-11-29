@@ -21,12 +21,13 @@
           <td><%= medium.nome %></td>
           <td><%= medium.data_submissao %></td>
           <td><%= medium.email_admin %></td>
-          <td><% @idioms.each do |idiom| %>
-            <%= idiom.idioma if idiom.id_midia == medium.id %>
+          <td><% @idioms.each do |idm| %>
+            <%= link_to idm.idioma, idiom_path(medium.id, idm[:id]), method: :delete, data: { confirm: 'Are you sure you want to remove this idiom?' } if idm.id_midia == medium.id %>
           <% end %></td>
           <td><%= link_to 'Show', medium %></td>
           <% if @current_user.is_super %>
             <td><%= link_to 'Add Idiom', new_idiom_path(medium.id) %></td>
+            <td><%= link_to 'Add Local', new_country_path(medium.id) %></td>
           <% end %>
           <% if @current_user.is_admin %>
             <td><%= link_to 'Edit', edit_medium_path(medium) %></td>

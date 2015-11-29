@@ -45,9 +45,9 @@ class IdiomsController < ApplicationController
   # DELETE /media/idioms/1
   # DELETE /media/idioms/1.json
   def destroy
-    @idiom.destroy
+    Idiom.where(id: @idiom[:id]).delete_all
     respond_to do |format|
-      format.html { redirect_to idioms_url }
+      format.html { redirect_to '/media' }
       format.json { head :no_content }
     end
   end
@@ -55,7 +55,7 @@ class IdiomsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_idiom
-      @idiom = Idiom.find(params[:id])
+      @idiom = Idiom.find_by_id(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
