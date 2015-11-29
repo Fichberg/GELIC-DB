@@ -5,6 +5,7 @@ class MediaController < ApplicationController
   # GET /media.json
   def index
     @media = Medium.all
+    @idioms = Idiom.all
   end
 
   # GET /media/1

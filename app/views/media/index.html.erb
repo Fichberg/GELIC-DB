@@ -6,13 +6,14 @@
 
     <thead>
       <tr>
-        <th>Nome</th>
-        <th>Tipo</th>
-        <th>Duracao</th>
-        <th>Data de Gravação</th>
-        <th>Data de Submissão</th>
-        <th>Email Coletor</th>
-        <th>Email Admin</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Duration</th>
+        <th>Recording Date</th>
+        <th>Submission Date</th>
+        <th>Collector's Email</th>
+        <th>Submitter Admin's Email</th>
+        <th>Languages</th>
         <th></th>
         <th></th>
         <th></th>
@@ -28,6 +29,9 @@
           <td><%= medium.data_submissao %></td>
           <td><%= medium.email_coletor %></td>
           <td><%= medium.email_admin %></td>
+          <td><% @idioms.each do |idiom| %>
+            <li><%= idiom.idioma if idiom.id_midia = medium.id %></li>
+          <% end %></td>
           <td><%= link_to 'Show', medium %></td>
           <% if @current_user.is_super %>
             <td><%= link_to 'Add Idiom', new_idiom_path(medium.id) %></td>

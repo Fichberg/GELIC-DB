@@ -85,6 +85,7 @@ create table videos(
 );
 
 create table idiomas(
+  id serial unique not null,
   id_midia int primary key references midias on delete cascade,
   idioma varchar(50) not null
 );
