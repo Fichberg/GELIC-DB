@@ -7,13 +7,9 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Type</th>
-        <th>Duration</th>
-        <th>Recording Date</th>
-        <th>Submission Date</th>
-        <th>Collector's Email</th>
-        <th>Submitter Admin's Email</th>
-        <th>Languages</th>
+        <th>Submission</th>
+        <th>Submitter</th>
+        <th>Idioms</th>
         <th></th>
         <th></th>
         <th></th>
@@ -23,14 +19,10 @@
       <% @media.each do |medium| %>
         <tr>
           <td><%= medium.nome %></td>
-          <td><%= medium.tipo %></td>
-          <td><%= medium.duracao %></td>
-          <td><%= medium.data_gravacao %></td>
           <td><%= medium.data_submissao %></td>
-          <td><%= medium.email_coletor %></td>
           <td><%= medium.email_admin %></td>
           <td><% @idioms.each do |idiom| %>
-            <li><%= idiom.idioma if idiom.id_midia = medium.id %></li>
+            <%= idiom.idioma if idiom.id_midia == medium.id %>
           <% end %></td>
           <td><%= link_to 'Show', medium %></td>
           <% if @current_user.is_super %>
