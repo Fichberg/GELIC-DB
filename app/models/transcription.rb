@@ -3,6 +3,6 @@ class Transcription < ActiveRecord::Base
   self.table_name = "transcricoes"
   self.primary_key = 'id'
 
-  belongs_to :media
-  belongs_to :city
+  belongs_to :medium, :foreign_key => 'id_midia' 
+  belongs_to :city, :foreign_key => 'id_cidade'
 end

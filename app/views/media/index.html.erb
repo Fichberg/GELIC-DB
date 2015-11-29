@@ -9,6 +9,7 @@
         <th>Name</th>
         <th>Submission</th>
         <th>Submitter</th>
+        <th>City</th>
         <th>Idioms</th>
         <th></th>
         <th></th>
@@ -21,6 +22,7 @@
           <td><%= medium.nome %></td>
           <td><%= medium.data_submissao %></td>
           <td><%= medium.email_admin %></td>
+          <td><%= medium.city.nome if medium.city.present? %></td>
           <td><% @idioms.each do |idm| %>
             <%= link_to idm.idioma, idiom_path(medium.id, idm[:id]), method: :delete, data: { confirm: 'Are you sure you want to remove this idiom?' } if idm.id_midia == medium.id %>
           <% end %></td>

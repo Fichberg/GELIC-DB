@@ -17,12 +17,12 @@
 
 <p>
   <strong>Media:</strong>
-  <%= @transcription.media %>
+  <%= @transcription.medium.nome %>
 </p>
 
 <p>
   <strong>City:</strong>
-  <%= @transcription.city %>
+  <%= @transcription.city.nome %>
 </p>
 
 <%= link_to 'Edit', edit_transcription_path(@transcription) %> |

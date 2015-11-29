@@ -6,7 +6,7 @@
       <th>Id</th>
       <th>Codigo</th>
       <th>Comentario</th>
-      <th>Media</th>
+      <th>Medium</th>
       <th>City</th>
       <th></th>
       <th></th>
@@ -20,8 +20,8 @@
         <td><%= transcription.id %></td>
         <td><%= transcription.codigo %></td>
         <td><%= transcription.comentario %></td>
-        <td><%= transcription.media %></td>
-        <td><%= transcription.city %></td>
+        <td><%= transcription.medium.nome %></td>
+        <td><%= transcription.city.nome %></td>
         <td><%= link_to 'Show', transcription %></td>
         <td><%= link_to 'Edit', edit_transcription_path(transcription) %></td>
         <td><%= link_to 'Destroy', transcription, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -35,6 +35,11 @@
   <%= @medium.data_submissao %>
 </p>
 
+<p>
+  <strong>City:</strong>
+  <%= @medium.city.nome if @medium.city.present? %>
+</p>
+
 <% if @current_user.is_super %>
   <%= link_to 'Add Idiom', new_idiom_path(@medium.id) %>
 <% end %>

@@ -35,6 +35,10 @@
     <%= f.label :data_submissao %><br>
     <%= f.datetime_select :data_submissao %>
   </div>
+  <div class="field">
+    <%= f.label :cidade %><br>
+    <%= f.select(:id_cidade, City.all.map { |city| [city.nome + ' - ' + city.nome_pais, city.id] })%>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
