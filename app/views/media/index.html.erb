@@ -41,4 +41,6 @@
 
 <br>
 
-<%= link_to 'New Medium', new_medium_path %>
+<% if @current_user.is_super %>
+  <%= link_to 'New Medium', new_medium_path %>
+<% end %>

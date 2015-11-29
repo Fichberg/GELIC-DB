@@ -12,6 +12,8 @@
 <%= link_to('members', '/members') if current_user %>
 <%= '|' if current_user %>
 <%= link_to('media', '/media') if current_user %>
+<%= '|' unless current_user.nil? %>
+<%= ("Online as " + current_user.email) unless current_user.nil? %>
 <%= yield %>
 
 </body>

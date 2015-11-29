@@ -26,9 +26,13 @@ class MembersController < ApplicationController
   # POST /members.json
   def create
     @member = Member.new(member_params)
+    @member.email_admin = @current_user.email
 
     respond_to do |format|
       if @member.save
+        if @member.is_super
+          (Admin.new(:email => @member.email)).save
+        end
         format.html { redirect_to @member, notice: 'Member was successfully created.' }
         format.json { render action: 'show', status: :created, location: @member }
       else
@@ -55,22 +59,41 @@ class MembersController < ApplicationController
   # DELETE /members/1
   # DELETE /members/1.json
   def destroy
-    @member.destroy
-    respond_to do |format|
-      format.html { redirect_to members_url }
-      format.json { head :no_content }
+    ok = true
+
+    if @member.is_super
+      all_members = Member.all
+      all_members.each do |m|
+        if m.email_admin.eql?(@member.email)
+          ok = false
+          break
+        end
+      end
     end
+
+    if ok
+      @member.destroy
+      respond_to do |format|
+        format.html { redirect_to members_url }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to members_url, notice: 'Was unable to delete this user: other users depend on it (admin email field). Update these users first.' }
+        format.json { head :no_content }
+      end
+    end
+
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member
       @member = Member.find(params[:id])
-      p @member
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:email, :senha, :senha_confirmation, :nome, :login, :data_criacao, :email_admin)
+      params.require(:member).permit(:email, :senha, :senha_confirmation, :nome, :login, :data_criacao, :is_super, :email_admin)
     end
 end

@@ -1,10 +1,11 @@
-  create table membros(
+﻿ create table membros(
     id serial unique not null,
     email varchar(254) primary key,
     senha char(32) not null,
     nome varchar(255),
     login varchar(20) unique not null,
     data_criacao date not null, 
+    is_super boolean default false,
     is_admin boolean default false
   );
 
@@ -34,7 +35,7 @@ insert into administradores(
 
 alter table membros add email_admin varchar(254) references administradores(email) on delete set null on update cascade;
 
-update membros set email_admin = 'admin@gelic.com.br', is_admin = true where email = 'admin@gelic.com.br';
+update membros set email_admin = 'admin@gelic.com.br', is_super = true, is_admin = true where email = 'admin@gelic.com.br';
 
 alter table membros alter column email_admin set not null;
 
@@ -45,7 +46,7 @@ create table midias(
   duracao interval not null,
   email_coletor varchar(254),
   data_gravacao date not null,
-  email_admin varchar(254) not null references administradores(email) on update cascade,
+  email_admin varchar(254) default 'admin@gelic.com.br' references administradores(email) on update cascade,
   data_submissao date not null
 );
 

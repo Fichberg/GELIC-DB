@@ -30,7 +30,9 @@
   <%= @member.email_admin %>
 </p>
 
-<% unless @member.is_admin %>
-  <%= link_to 'Edit', edit_member_path(@member) %>
+<% if @current_user.is_admin %>
+  <% unless @member.is_admin %>
+    <%= link_to 'Edit', edit_member_path(@member) %>
+  <% end %>
 <% end %>
 <%= link_to 'Back', members_path %>

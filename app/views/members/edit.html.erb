@@ -1,6 +1,56 @@
 <h1>Editing member</h1>
 
-<%= render 'form' %>
+<%= form_for(@member) do |f| %>
+  <% if @member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+      <% @member.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :senha %><br>
+    <%= f.password_field :senha %>
+  </div>
+  <div class="field">
+    <%=f.label :confirmacao_da_senha %><br>
+    <%=f.password_field :senha_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :login %><br>
+    <%= f.text_field :login %>
+  </div>
+  <div class="field">
+    <%= f.label :data_criacao %><br>
+    <%= f.date_select :data_criacao %>
+  </div>
+  <% if @current_user.is_admin %>
+    <div class="field">
+      <%= f.label "Promote this member to superuser?" %> <br />
+      <%= f.check_box :is_super %> <br />
+    </div>
+    <div class="field">
+      <%= f.label :email_admin %> <br />
+      <%= f.text_field :email_admin %> <br />
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @member %> |
 <%= link_to 'Back', members_path %>

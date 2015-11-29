@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 <h1>GELIC Members</h1>
 
 <table>
@@ -25,9 +26,11 @@
         <td><%= member.data_criacao %></td>
         <td><%= member.email_admin %></td>
         <td><%= link_to 'Show', member %></td>
-        <% unless member.is_admin %>
-          <td><%= link_to 'Edit', edit_member_path(member) %></td>
-          <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if @current_user.is_admin %>
+          <% unless member.is_admin %>
+            <td><%= link_to 'Edit', edit_member_path(member) %></td>
+            <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>
@@ -36,4 +39,6 @@
 
 <br>
 
-<%= link_to 'New Member', new_member_path %>
+<% if @current_user.is_super %>
+  <%= link_to 'New Member', new_member_path %>
+<% end %>
