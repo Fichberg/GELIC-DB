@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @transcription.id %>
+</p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @transcription.codigo %>
+</p>
+
+<p>
+  <strong>Comentario:</strong>
+  <%= @transcription.comentario %>
+</p>
+
+<p>
+  <strong>Media:</strong>
+  <%= @transcription.media %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @transcription.city %>
+</p>
+
+<%= link_to 'Edit', edit_transcription_path(@transcription) %> |
+<%= link_to 'Back', transcriptions_path %>

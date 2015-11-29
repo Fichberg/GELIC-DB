@@ -1,4 +1,12 @@
 GELICDb::Application.routes.draw do
+  resources :countries
+
+  resources :states
+
+  resources :cities
+
+  resources :transcriptions
+
   get '/' => 'home#index'
   resources :members, :id => /[^\/]+/
   resources :media, :id => /[^\/]+/

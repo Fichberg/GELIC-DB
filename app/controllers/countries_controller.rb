@@ -1,33 +1,30 @@
 class CountriesController < ApplicationController
-  before_action :set_country, only: [:destroy]
+  before_action :set_country, only: [:show, :edit, :update, :destroy]
 
-  # GET /media/countries
-  # GET /media/countries.json
+  # GET /countries
+  # GET /countries.json
   def index
+    @countries = Country.all
   end
 
-  # GET /media/countries/1
-  # GET /media/countries/1.json
+  # GET /countries/1
+  # GET /countries/1.json
   def show
   end
 
-  # GET /media/countries/new
+  # GET /countries/new
   def new
     @country = Country.new
   end
 
-  # GET /media/countries/1/edit
+  # GET /countries/1/edit
   def edit
   end
 
-  # POST /media/countries
-  # POST /media/countries.json
+  # POST /countries
+  # POST /countries.json
   def create
     @country = Country.new(country_params)
-    @country.id_midia = params[:id_midia]
-
-    puts "AQUI"
-    p params[:tipo].nil?
 
     respond_to do |format|
       if @country.save
@@ -40,13 +37,22 @@ class CountriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /media/countries/1
-  # PATCH/PUT /media/countries/1.json
+  # PATCH/PUT /countries/1
+  # PATCH/PUT /countries/1.json
   def update
+    respond_to do |format|
+      if @country.update(country_params)
+        format.html { redirect_to @country, notice: 'Country was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @country.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
-  # DELETE /media/countries/1
-  # DELETE /media/countries/1.json
+  # DELETE /countries/1
+  # DELETE /countries/1.json
   def destroy
     @country.destroy
     respond_to do |format|
@@ -62,7 +68,7 @@ class CountriesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-     def country_params
-       params.require(:country).permit(:countrya, :id_midia)
-     end
+    def country_params
+      params.require(:country).permit(:nome)
+    end
 end
