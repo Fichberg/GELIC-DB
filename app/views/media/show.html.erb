@@ -35,6 +35,10 @@
   <%= @medium.data_submissao %>
 </p>
 
+<% if @current_user.is_super %>
+  <%= link_to 'Add Idiom', new_idiom_path(@medium.id) %>
+<% end %>
+
 <% if @current_user.is_admin %>
   <%= link_to 'Edit', edit_medium_path(@medium) %>
 <% end %>

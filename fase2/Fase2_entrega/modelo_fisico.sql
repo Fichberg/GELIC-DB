@@ -69,6 +69,7 @@ create table cidades(
 );
 
 create table transcricoes(
+  id serial unique not null,
   id_midia int primary key references midias on delete cascade,
   codigo varchar(100) not null,
   comentario text,
@@ -78,17 +79,20 @@ create table transcricoes(
 );
 
 create table audios(
+  id serial unique not null,
   id_midia int primary key references midias on delete cascade,
   codigo varchar(100) not null
 );
 
 create table videos(
+  id serial unique not null,
   id_midia int primary key references midias on delete cascade,
   link text not null
 );
 
 create table idiomas(
-  id_midia int primary key references midias on delete cascade,
+  id serial primary key,
+  id_midia int references midias(id) on delete cascade,
   idioma varchar(50) not null
 );
 

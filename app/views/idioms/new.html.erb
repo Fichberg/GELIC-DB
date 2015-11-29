@@ -1,0 +1,14 @@
+<h1>New Idiom</h1>
+
+<%= form_for(@idiom) do |f| %>
+  <div class="field">
+    <%= f.label :idioma %><br>
+    <%= f.select :idioma, options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "name", "name") %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', media_path %>
