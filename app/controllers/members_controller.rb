@@ -27,6 +27,7 @@ class MembersController < ApplicationController
   def create
     @member = Member.new(member_params)
     @member.email_admin = @current_user.email
+    @member.data_criacao = Time.new
 
     respond_to do |format|
       if !member_params[:email].empty? && !member_params[:senha].empty? && !member_params[:senha_confirmation].empty? && !member_params[:nome].empty? && !member_params[:login].empty?
