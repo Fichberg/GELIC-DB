@@ -1,4 +1,6 @@
 GELICDb::Application.routes.draw do
+  resources :videos
+
   resources :audios, except: [:edit, :update] do
     get :file, on: :member
   end
