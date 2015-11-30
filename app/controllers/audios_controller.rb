@@ -35,8 +35,10 @@ class AudiosController < ApplicationController
       end
     end
 
+    p @audio
+
     respond_to do |format|
-      if ok
+      if ok && !audio_params[:id_midia].nil? && !audio_params[:codigo].nil?
         if @audio.save
           format.html { redirect_to @audio, notice: 'Audio was successfully created.' }
           format.json { render action: 'show', status: :created, location: @audio }
