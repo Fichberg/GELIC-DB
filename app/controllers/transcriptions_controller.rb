@@ -5,6 +5,7 @@ class TranscriptionsController < ApplicationController
   # GET /transcriptions.json
   def index
     @transcriptions = Transcription.all
+    @authors = Author.all
   end
 
   # GET /transcriptions/1
@@ -28,7 +29,7 @@ class TranscriptionsController < ApplicationController
 
     respond_to do |format|
       if !transcription_params[:id_midia].empty? && !transcription_params[:id_cidade].empty?
-        if @transcription.save
+        if @transcription.save && (Author.new(:email_membro => @current_user.email, :id_midia => @transcription.id_midia)).save
           format.html { redirect_to @transcription, notice: 'Transcription was successfully created.' }
           format.json { render action: 'show', status: :created, location: @transcription }
         end

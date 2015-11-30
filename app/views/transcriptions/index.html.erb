@@ -4,8 +4,7 @@
   <% unless @transcriptions.empty? %>
     <thead>
       <tr>
-        <th>Code</th>
-        <th>Commentaries</th>
+        <th>Author</th>
         <th>Medium</th>
         <th>City</th>
         <th></th>
@@ -17,8 +16,12 @@
     <tbody>
       <% @transcriptions.each do |transcription| %>
         <tr>
-          <td><%= transcription.codigo %></td>
-          <td><%= transcription.comentario %></td>
+          <% @authors.each do |author| %>
+            <% if author.id_midia == transcription.id_midia %>
+              <td><%= author.email_membro %></td>
+              <% break %>
+            <% end %>
+          <% end %>
           <td><%= transcription.medium.nome %></td>
           <td><%= transcription.city.nome %></td>
           <td><%= link_to 'Show', transcription %></td>
@@ -36,6 +39,4 @@
 
 <br>
 
-<% if @current_user.is_super %>
-  <%= link_to 'New Transcription', new_transcription_path %>
-<% end %>
+<%= link_to 'New Transcription', new_transcription_path %>

@@ -1,28 +1,32 @@
 <h1>Audios</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>File</th>
-      <th>Medium</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @audios.each do |audio| %>
+  <% unless @audios.empty? %>
+    <thead>
       <tr>
-        <td><%= audio.codigo_identifier %></td>
-        <td><%= audio.medium.nome %></td>
-        <td><%= link_to 'Show', audio %></td>
-        <% if @current_user.is_admin %>
-          <td><%= link_to 'Destroy', audio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <th>File</th>
+        <th>Medium</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
+
+    <tbody>
+      <% @audios.each do |audio| %>
+        <tr>
+          <td><%= audio.codigo_identifier %></td>
+          <td><%= audio.medium.nome %></td>
+          <td><%= link_to 'Show', audio %></td>
+          <% if @current_user.is_admin %>
+            <td><%= link_to 'Destroy', audio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    No audio found
+  <% end %>
 </table>
 
 <br>
