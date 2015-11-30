@@ -27,13 +27,14 @@ class StatesController < ApplicationController
     @state = State.new(state_params)
 
     respond_to do |format|
-      if @state.save
-        format.html { redirect_to @state, notice: 'State was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @state }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @state.errors, status: :unprocessable_entity }
+      if !state_params[:nome].empty? && !state_params[:nome_pais].nil?
+        if @state.save
+          format.html { redirect_to @state, notice: 'State was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @state }
+        end
       end
+      format.html { render action: 'new' }
+      format.json { render json: @state.errors, status: :unprocessable_entity }
     end
   end
 
@@ -41,13 +42,14 @@ class StatesController < ApplicationController
   # PATCH/PUT /states/1.json
   def update
     respond_to do |format|
-      if @state.update(state_params)
-        format.html { redirect_to @state, notice: 'State was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @state.errors, status: :unprocessable_entity }
+      if !state_params[:nome].empty? && !state_params[:nome_pais].nil?
+        if @state.update(state_params)
+          format.html { redirect_to @state, notice: 'State was successfully updated.' }
+          format.json { head :no_content }
+        end
       end
+      format.html { render action: 'edit' }
+      format.json { render json: @state.errors, status: :unprocessable_entity }
     end
   end
 

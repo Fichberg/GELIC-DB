@@ -27,13 +27,14 @@ class TranscriptionsController < ApplicationController
     @transcription = Transcription.new(transcription_params)
 
     respond_to do |format|
-      if @transcription.save
-        format.html { redirect_to @transcription, notice: 'Transcription was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @transcription }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @transcription.errors, status: :unprocessable_entity }
+      if !transcription_params[:id_midia].empty? && !transcription_params[:codigo].empty? && !transcription_params[:id_cidade].empty?
+        if @transcription.save
+          format.html { redirect_to @transcription, notice: 'Transcription was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @transcription }
+        end
       end
+      format.html { render action: 'new' }
+      format.json { render json: @transcription.errors, status: :unprocessable_entity }
     end
   end
 
@@ -41,13 +42,14 @@ class TranscriptionsController < ApplicationController
   # PATCH/PUT /transcriptions/1.json
   def update
     respond_to do |format|
-      if @transcription.update(transcription_params)
-        format.html { redirect_to @transcription, notice: 'Transcription was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @transcription.errors, status: :unprocessable_entity }
+      if !transcription_params[:id_midia].empty? && !transcription_params[:codigo].empty? && !transcription_params[:id_cidade].empty?
+        if @transcription.update(transcription_params)
+          format.html { redirect_to @transcription, notice: 'Transcription was successfully updated.' }
+          format.json { head :no_content }
+        end
       end
+      format.html { render action: 'edit' }
+      format.json { render json: @transcription.errors, status: :unprocessable_entity }
     end
   end
 

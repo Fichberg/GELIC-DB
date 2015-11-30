@@ -27,32 +27,37 @@ class MembersController < ApplicationController
   def create
     @member = Member.new(member_params)
     @member.email_admin = @current_user.email
+    @member.data_criacao = Time.new
 
     respond_to do |format|
-      if @member.save
-        if @member.is_super
-          (Admin.new(:email => @member.email)).save
+      if !member_params[:email].empty? && !member_params[:senha].empty? && !member_params[:senha_confirmation].empty? && !member_params[:nome].empty? && !member_params[:login].empty?
+        if @member.save
+          if @member.is_super
+            (Admin.new(:email => @member.email)).save
+          end
+          format.html { redirect_to @member, notice: 'Member was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @member }
         end
-        format.html { redirect_to @member, notice: 'Member was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @member }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
       end
+      format.html { render action: 'new' }
+      format.json { render json: @member.errors, status: :unprocessable_entity }
     end
   end
 
   # PATCH/PUT /members/1
   # PATCH/PUT /members/1.json
   def update
+    @member.email_admin = @current_user.email
+
     respond_to do |format|
-      if @member.update(member_params)
-        format.html { redirect_to @member, notice: 'Member was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
+      if !member_params[:email].empty? && !member_params[:senha].empty? && !member_params[:senha_confirmation].empty? && !member_params[:nome].empty? && !member_params[:login].empty?
+        if @member.update(member_params)
+          format.html { redirect_to @member, notice: 'Member was successfully updated.' }
+          format.json { head :no_content }
+        end
       end
+      format.html { render action: 'edit' }
+      format.json { render json: @member.errors, status: :unprocessable_entity }
     end
   end
 

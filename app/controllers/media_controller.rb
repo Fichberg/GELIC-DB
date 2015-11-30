@@ -27,15 +27,17 @@ class MediaController < ApplicationController
   def create
     @medium = Medium.new(medium_params)
     @medium.email_admin = @current_user.email
+    @medium.data_submissao = Time.new
 
     respond_to do |format|
-      if @medium.save
-        format.html { redirect_to @medium, notice: 'Medium was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @medium }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @medium.errors, status: :unprocessable_entity }
+      if !medium_params[:tipo].empty? && !medium_params[:nome].empty? && !medium_params[:duracao].empty? && !medium_params[:email_coletor].empty? && !medium_params[:id_cidade].nil?
+        if @medium.save
+          format.html { redirect_to @medium, notice: 'Medium was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @medium }
+        end
       end
+      format.html { render action: 'new' }
+      format.json { render json: @medium.errors, status: :unprocessable_entity }
     end
   end
 
@@ -43,13 +45,14 @@ class MediaController < ApplicationController
   # PATCH/PUT /media/1.json
   def update
     respond_to do |format|
-      if @medium.update(medium_params)
-        format.html { redirect_to @medium, notice: 'Medium was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @medium.errors, status: :unprocessable_entity }
+      if !medium_params[:tipo].empty? && !medium_params[:nome].empty? && !medium_params[:duracao].empty? && !medium_params[:email_coletor].empty? && !medium_params[:id_cidade].nil?
+        if @medium.update(medium_params)
+          format.html { redirect_to @medium, notice: 'Medium was successfully updated.' }
+          format.json { head :no_content }
+        end
       end
+      format.html { render action: 'edit' }
+      format.json { render json: @medium.errors, status: :unprocessable_entity }
     end
   end
 

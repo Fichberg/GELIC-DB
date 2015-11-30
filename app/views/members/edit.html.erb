@@ -33,18 +33,10 @@
     <%= f.label "Login" %><br>
     <%= f.text_field :login %>
   </div>
-  <div class="field">
-    <%= f.label "Creation Date" %><br>
-    <%= f.date_select :data_criacao %>
-  </div>
   <% if @current_user.is_admin %>
     <div class="field">
       <%= f.label "Promote this member to superuser?" %> <br />
       <%= f.check_box :is_super %> <br />
-    </div>
-    <div class="field">
-      <%= f.label "Email Admin" %> <br />
-      <%= f.text_field :email_admin %> <br />
     </div>
   <% end %>
   <div class="actions">
