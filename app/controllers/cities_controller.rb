@@ -27,13 +27,14 @@ class CitiesController < ApplicationController
     @city = City.new(city_params)
 
     respond_to do |format|
-      if @city.save
-        format.html { redirect_to @city, notice: 'City was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @city }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @city.errors, status: :unprocessable_entity }
+      if !city_params[:nome].empty? && !city_params[:nome_pais].nil?
+        if @city.save
+          format.html { redirect_to @city, notice: 'City was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @city }
+        end
       end
+      format.html { render action: 'new' }
+      format.json { render json: @city.errors, status: :unprocessable_entity }
     end
   end
 
@@ -41,13 +42,14 @@ class CitiesController < ApplicationController
   # PATCH/PUT /cities/1.json
   def update
     respond_to do |format|
-      if @city.update(city_params)
-        format.html { redirect_to @city, notice: 'City was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @city.errors, status: :unprocessable_entity }
+      if !city_params[:nome].empty? && !city_params[:nome_pais].nil?
+        if @city.update(city_params)
+          format.html { redirect_to @city, notice: 'City was successfully updated.' }
+          format.json { head :no_content }
+        end
       end
+      format.html { render action: 'edit' }
+      format.json { render json: @city.errors, status: :unprocessable_entity }
     end
   end
 

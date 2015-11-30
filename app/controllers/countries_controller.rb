@@ -27,13 +27,14 @@ class CountriesController < ApplicationController
     @country = Country.new(country_params)
 
     respond_to do |format|
-      if @country.save
-        format.html { redirect_to @country, notice: 'Country was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @country }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @country.errors, status: :unprocessable_entity }
+      if !country_params[:nome].empty?
+        if @country.save
+          format.html { redirect_to @country, notice: 'Country was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @country }
+        end
       end
+      format.html { render action: 'new' }
+      format.json { render json: @country.errors, status: :unprocessable_entity }
     end
   end
 
@@ -41,13 +42,14 @@ class CountriesController < ApplicationController
   # PATCH/PUT /countries/1.json
   def update
     respond_to do |format|
-      if @country.update(country_params)
-        format.html { redirect_to @country, notice: 'Country was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @country.errors, status: :unprocessable_entity }
+      if !country_params[:nome].empty?
+        if @country.update(country_params)
+          format.html { redirect_to @country, notice: 'Country was successfully updated.' }
+          format.json { head :no_content }
+        end
       end
+      format.html { render action: 'edit' }
+      format.json { render json: @country.errors, status: :unprocessable_entity }
     end
   end
 
