@@ -3,7 +3,6 @@ class Audio < ActiveRecord::Base
   self.primary_key = 'id'
 
   before_save :codigo_valid_format?
-
   belongs_to :medium, :foreign_key => 'id_midia'
 
   mount_uploader :codigo, AudioUploader

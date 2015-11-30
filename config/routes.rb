@@ -9,8 +9,9 @@ GELICDb::Application.routes.draw do
 
   resources :cities
 
-  resources :transcriptions
-
+  resources :transcriptions do
+    get :file, on: :member
+  end
   get '/' => 'home#index'
   resources :members, :id => /[^\/]+/
   resources :media, :id => /[^\/]+/

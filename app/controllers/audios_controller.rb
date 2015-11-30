@@ -35,8 +35,6 @@ class AudiosController < ApplicationController
       end
     end
 
-    p @audio
-
     respond_to do |format|
       if ok && !audio_params[:id_midia].nil? && !audio_params[:codigo].nil?
         if @audio.save

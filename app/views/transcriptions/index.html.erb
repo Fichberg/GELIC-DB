@@ -4,7 +4,6 @@
   <% unless @transcriptions.empty? %>
     <thead>
       <tr>
-        <th>Id</th>
         <th>Code</th>
         <th>Commentaries</th>
         <th>Medium</th>
@@ -18,7 +17,6 @@
     <tbody>
       <% @transcriptions.each do |transcription| %>
         <tr>
-          <td><%= transcription.id %></td>
           <td><%= transcription.codigo %></td>
           <td><%= transcription.comentario %></td>
           <td><%= transcription.medium.nome %></td>

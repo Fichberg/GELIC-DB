@@ -10,10 +10,9 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label "Code" %><br>
-    <%= f.number_field :codigo %>
+  <%= f.label :new_file %><br>
+    <%= f.file_field :codigo, :accept => ".pdf" %>
   </div>
   <div class="field">
     <%= f.label "Commentaries" %><br>

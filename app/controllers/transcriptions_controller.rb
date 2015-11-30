@@ -27,7 +27,7 @@ class TranscriptionsController < ApplicationController
     @transcription = Transcription.new(transcription_params)
 
     respond_to do |format|
-      if !transcription_params[:id_midia].empty? && !transcription_params[:codigo].empty? && !transcription_params[:id_cidade].empty?
+      if !transcription_params[:id_midia].empty? && !transcription_params[:id_cidade].empty?
         if @transcription.save
           format.html { redirect_to @transcription, notice: 'Transcription was successfully created.' }
           format.json { render action: 'show', status: :created, location: @transcription }
@@ -42,7 +42,7 @@ class TranscriptionsController < ApplicationController
   # PATCH/PUT /transcriptions/1.json
   def update
     respond_to do |format|
-      if !transcription_params[:id_midia].empty? && !transcription_params[:codigo].empty? && !transcription_params[:id_cidade].empty?
+      if !transcription_params[:id_midia].empty? && !transcription_params[:id_cidade].empty?
         if @transcription.update(transcription_params)
           format.html { redirect_to @transcription, notice: 'Transcription was successfully updated.' }
           format.json { head :no_content }
@@ -60,6 +60,15 @@ class TranscriptionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to transcriptions_url }
       format.json { head :no_content }
+    end
+  end
+
+  def file
+    @transcription = Transcription.find(params[:id])
+    content = @transcription.codigo.read
+    if stale?(etag: content, last_modified: Date.new, public: true)
+      send_data content, type: @transcription.codigo.file.content_type, disposition: "inline"
+      expires_in 0, public: true
     end
   end
 
