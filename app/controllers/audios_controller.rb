@@ -1,5 +1,5 @@
 class AudiosController < ApplicationController
-  before_action :set_audio, only: [:show, :edit, :update, :destroy]
+  before_action :set_audio, only: [:show, :destroy]
 
   # GET /audios
   # GET /audios.json
@@ -24,16 +24,26 @@ class AudiosController < ApplicationController
   # POST /audios
   # POST /audios.json
   def create
+    ok = true
     @audio = Audio.new(audio_params)
+    @audios = Audio.all
+
+    @audios.each do |aud|
+      if aud.id_midia == @audio[:id_midia]
+        ok = false
+        break
+      end
+    end
 
     respond_to do |format|
-      if @audio.save
-        format.html { redirect_to @audio, notice: 'Audio was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @audio }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @audio.errors, status: :unprocessable_entity }
+      if ok
+        if @audio.save
+          format.html { redirect_to @audio, notice: 'Audio was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @audio }
+        end
       end
+      format.html { render action: 'new' }
+      format.json { render json: @audio.errors, status: :unprocessable_entity }
     end
   end
 

@@ -1,9 +1,9 @@
-<h1>Listing audios</h1>
+<h1>Audios</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Arquivo</th>
+      <th>File</th>
       <th>Medium</th>
       <th></th>
       <th></th>
@@ -17,8 +17,9 @@
         <td><%= audio.codigo_identifier %></td>
         <td><%= audio.medium.nome %></td>
         <td><%= link_to 'Show', audio %></td>
-        <td><%= link_to 'Edit', edit_audio_path(audio) %></td>
-        <td><%= link_to 'Destroy', audio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if @current_user.is_admin %>
+          <td><%= link_to 'Destroy', audio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +27,6 @@
 
 <br>
 
-<%= link_to 'New Audio', new_audio_path %>
+<% if @current_user.is_super %>
+  <%= link_to 'New Audio', new_audio_path %>
+<% end %>
