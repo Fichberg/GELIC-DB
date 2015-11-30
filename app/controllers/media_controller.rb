@@ -25,10 +25,11 @@ class MediaController < ApplicationController
   # POST /media
   # POST /media.json
   def create
+    time = Time.new
+
     @medium = Medium.new(medium_params)
     @medium.email_admin = @current_user.email
-    @medium.data_submissao = Time.new
-
+    
     respond_to do |format|
       if !medium_params[:tipo].empty? && !medium_params[:nome].empty? && !medium_params[:duracao].empty? && !medium_params[:email_coletor].empty? && !medium_params[:id_cidade].nil?
         if @medium.save
