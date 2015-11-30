@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Nome:</strong>
+  <strong>Name:</strong>
   <%= @city.nome %>
 </p>
 
@@ -15,5 +15,7 @@
   <%= @city.country.nome %>
 </p>
 
-<%= link_to 'Edit', edit_city_path(@city) %> |
+<% if @current_user.is_admin %>
+  <%= link_to 'Edit', edit_city_path(@city) %> |
+<% end %>
 <%= link_to 'Back', cities_path %>

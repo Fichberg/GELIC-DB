@@ -1,35 +1,43 @@
-<h1>Listing transcriptions</h1>
+<h1>Transcriptions</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Codigo</th>
-      <th>Comentario</th>
-      <th>Medium</th>
-      <th>City</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @transcriptions.each do |transcription| %>
+  <% unless @transcriptions.empty? %>
+    <thead>
       <tr>
-        <td><%= transcription.id %></td>
-        <td><%= transcription.codigo %></td>
-        <td><%= transcription.comentario %></td>
-        <td><%= transcription.medium.nome %></td>
-        <td><%= transcription.city.nome %></td>
-        <td><%= link_to 'Show', transcription %></td>
-        <td><%= link_to 'Edit', edit_transcription_path(transcription) %></td>
-        <td><%= link_to 'Destroy', transcription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Id</th>
+        <th>Code</th>
+        <th>Commentaries</th>
+        <th>Medium</th>
+        <th>City</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
+
+    <tbody>
+      <% @transcriptions.each do |transcription| %>
+        <tr>
+          <td><%= transcription.id %></td>
+          <td><%= transcription.codigo %></td>
+          <td><%= transcription.comentario %></td>
+          <td><%= transcription.medium.nome %></td>
+          <td><%= transcription.city.nome %></td>
+          <td><%= link_to 'Show', transcription %></td>
+          <% if @current_user.is_admin %>
+            <td><%= link_to 'Edit', edit_transcription_path(transcription) %></td>
+            <td><%= link_to 'Destroy', transcription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    No transcription found
+  <% end %>
 </table>
 
 <br>
 
-<%= link_to 'New Transcription', new_transcription_path %>
+<% if @current_user.is_super %>
+  <%= link_to 'New Transcription', new_transcription_path %>
+<% end %>

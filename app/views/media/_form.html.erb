@@ -12,31 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :tipo %><br>
+    <%= f.label "Type" %><br>
     <%= f.text_field :tipo %>
   </div>
   <div class="field">
-    <%= f.label :nome %><br>
+    <%= f.label "Name" %><br>
     <%= f.text_field :nome %>
   </div>
   <div class="field">
-    <%= f.label :duracao %><br>
+    <%= f.label "Duration" %><br>
     <%= f.text_field :duracao %>
   </div>
   <div class="field">
-    <%= f.label :email_coletor %><br>
+    <%= f.label "Collector's Email" %><br>
     <%= f.text_field :email_coletor %>
   </div>
   <div class="field">
-    <%= f.label :data_gravacao %><br>
+    <%= f.label "Recording Date" %><br>
     <%= f.datetime_select :data_gravacao %>
   </div>
   <div class="field">
-    <%= f.label :data_submissao %><br>
+    <%= f.label "Submission Date" %><br>
     <%= f.datetime_select :data_submissao %>
   </div>
   <div class="field">
-    <%= f.label :cidade %><br>
+    <%= f.label "City" %><br>
     <%= f.select(:id_cidade, City.all.map { |city| [city.nome + ' - ' + city.nome_pais, city.id] })%>
   </div>
   <div class="actions">

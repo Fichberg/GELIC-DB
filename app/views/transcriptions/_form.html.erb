@@ -12,19 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :codigo %><br>
+    <%= f.label "Code" %><br>
     <%= f.number_field :codigo %>
   </div>
   <div class="field">
-    <%= f.label :comentario %><br>
+    <%= f.label "Commentaries" %><br>
     <%= f.text_area :comentario %>
   </div>
   <div class="field">
-    <%= f.label :mídia %><br>
+    <%= f.label "Medium" %><br>
     <%= f.select(:id_midia, Medium.all.map { |medium| [medium.nome, medium.id] })%>
   </div>
     <div class="field">
-    <%= f.label :cidade %><br>
+    <%= f.label "City" %><br>
     <%= f.select(:id_cidade, City.all.map { |city| [city.nome + ' - ' + city.nome_pais, city.id] })%>
   </div>
   <div class="actions">

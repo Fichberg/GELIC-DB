@@ -1,29 +1,37 @@
-<h1>Listing states</h1>
+<h1>States</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Country</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @states.each do |state| %>
+  <% unless @states.empty? %>
+    <thead>
       <tr>
-        <td><%= state.nome %></td>
-        <td><%= state.country.nome %></td>
-        <td><%= link_to 'Show', state %></td>
-        <td><%= link_to 'Edit', edit_state_path(state) %></td>
-        <td><%= link_to 'Destroy', state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Country</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
+    </thead>
+
+    <tbody>
+      <% @states.each do |state| %>
+        <tr>
+          <td><%= state.nome %></td>
+          <td><%= state.country.nome %></td>
+          <td><%= link_to 'Show', state %></td>
+          <% if @current_user.is_admin %>
+            <td><%= link_to 'Edit', edit_state_path(state) %></td>
+            <td><%= link_to 'Destroy', state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+    <% else %>
+      No state found
     <% end %>
-  </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New State', new_state_path %>
+<% if @current_user.is_super %>
+  <%= link_to 'New State', new_state_path %>
+<% end %>

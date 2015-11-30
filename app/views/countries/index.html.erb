@@ -1,27 +1,35 @@
-<h1>Listing countries</h1>
+<h1>Countries</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @countries.each do |country| %>
+  <% unless @countries.empty? %>
+    <thead>
       <tr>
-        <td><%= country.nome %></td>
-        <td><%= link_to 'Show', country %></td>
-        <td><%= link_to 'Edit', edit_country_path(country) %></td>
-        <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
+
+    <tbody>
+      <% @countries.each do |country| %>
+        <tr>
+          <td><%= country.nome %></td>
+          <td><%= link_to 'Show', country %></td>
+          <% if @current_user.is_admin %>
+            <td><%= link_to 'Edit', edit_country_path(country) %></td>
+            <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    No country found
+  <% end %>
 </table>
 
 <br>
 
-<%= link_to 'New Country', new_country_path %>
+<% if @current_user.is_super %>
+  <%= link_to 'New Country', new_country_path %>
+<% end %>

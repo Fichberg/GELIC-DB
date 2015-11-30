@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :nome %><br>
+    <%= f.label "Name" %><br>
     <%= f.text_field :nome %>
   </div>
   <div class="field">
-    <%= f.label :pais %><br>
+    <%= f.label "Country" %><br>
     <%= f.select :nome_pais, Country.all.map {|country| country.nome}%>
   </div>
   <div class="actions">

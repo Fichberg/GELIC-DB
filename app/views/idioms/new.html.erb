@@ -2,7 +2,7 @@
 
 <%= form_for(@idiom) do |f| %>
   <div class="field">
-    <%= f.label :idioma %><br>
+    <%= f.label "Idiom" %><br>
     <%= f.select :idioma, options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "name", "name") %>
   </div>
   <div class="actions">

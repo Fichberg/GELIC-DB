@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Nome:</strong>
+  <strong>Name:</strong>
   <%= @state.nome %>
 </p>
 
@@ -10,5 +10,7 @@
   <%= @state.country.nome %>
 </p>
 
-<%= link_to 'Edit', edit_state_path(@state) %> |
+<% if @current_user.is_admin %>
+  <%= link_to 'Edit', edit_state_path(@state) %> |
+<% end %>
 <%= link_to 'Back', states_path %>

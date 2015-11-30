@@ -12,27 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label "Email" %><br>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :senha %><br>
+    <%= f.label "Password" %><br>
     <%= f.password_field :senha %>
   </div>
   <div class="field">
-    <%=f.label :confirmacao_da_senha %><br>
+    <%=f.label "Password Confirmation" %><br>
     <%=f.password_field :senha_confirmation %>
   </div>
   <div class="field">
-    <%= f.label :nome %><br>
+    <%= f.label "Name" %><br>
     <%= f.text_field :nome %>
   </div>
   <div class="field">
-    <%= f.label :login %><br>
+    <%= f.label "Login" %><br>
     <%= f.text_field :login %>
   </div>
   <div class="field">
-    <%= f.label :data_criacao %><br>
+    <%= f.label "Creation Date" %><br>
     <%= f.date_select :data_criacao %>
   </div>
   <% if @current_user.is_admin %>

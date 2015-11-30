@@ -6,17 +6,17 @@
 </p>
 
 <p>
-  <strong>Codigo:</strong>
+  <strong>Code:</strong>
   <%= @transcription.codigo %>
 </p>
 
 <p>
-  <strong>Comentario:</strong>
+  <strong>Commentaries:</strong>
   <%= @transcription.comentario %>
 </p>
 
 <p>
-  <strong>Media:</strong>
+  <strong>Medium:</strong>
   <%= @transcription.medium.nome %>
 </p>
 
@@ -25,5 +25,7 @@
   <%= @transcription.city.nome %>
 </p>
 
-<%= link_to 'Edit', edit_transcription_path(@transcription) %> |
+<% if @current_user.is_admin %>
+  <%= link_to 'Edit', edit_transcription_path(@transcription) %> |
+<% end %>
 <%= link_to 'Back', transcriptions_path %>

@@ -6,12 +6,12 @@
 </p>
 
 <p>
-  <strong>Senha:</strong>
+  <strong>Password:</strong>
   <%= @member.senha %>
 </p>
 
 <p>
-  <strong>Nome:</strong>
+  <strong>Name:</strong>
   <%= @member.nome %>
 </p>
 
@@ -21,18 +21,16 @@
 </p>
 
 <p>
-  <strong>Data criacao:</strong>
+  <strong>Creation Date:</strong>
   <%= @member.data_criacao %>
 </p>
 
 <p>
-  <strong>Email admin:</strong>
+  <strong>Email Admin:</strong>
   <%= @member.email_admin %>
 </p>
 
 <% if @current_user.is_admin %>
-  <% unless @member.is_admin %>
-    <%= link_to 'Edit', edit_member_path(@member) %>
-  <% end %>
+  <%= link_to 'Edit', edit_member_path(@member) %>
 <% end %>
 <%= link_to 'Back', members_path %>
