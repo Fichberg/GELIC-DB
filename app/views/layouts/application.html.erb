@@ -13,6 +13,8 @@
 <%= '|' if current_user %>
 <%= link_to('media', '/media') if current_user %>
 <%= '|' unless current_user.nil? %>
+<%= link_to('audios', '/audios') if current_user %>
+<%= '|' unless current_user.nil? %>
 <%= link_to('transcriptions', '/transcriptions') if current_user %>
 <%= '|' unless current_user.nil? %>
 <%= link_to('countries', '/countries') if current_user %>

@@ -1,4 +1,8 @@
 GELICDb::Application.routes.draw do
+  resources :audios do
+    get :file, on: :member
+  end
+
   resources :countries
 
   resources :states

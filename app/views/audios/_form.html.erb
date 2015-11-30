@@ -1,0 +1,26 @@
+<%= form_for(@audio) do |f| %>
+  <% if @audio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@audio.errors.count, "error") %> prohibited this audio from being saved:</h2>
+
+      <ul>
+      <% @audio.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+  <%= f.label :new_file %><br>
+    <%= f.file_field :codigo, :accept => ".mp3" %>
+  </div>
+  <div class="field">
+    <%= f.label :medium %><br>
+    <%= f.select(:id_midia, Medium.all.map { |medium| [medium.nome, medium.id] })%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

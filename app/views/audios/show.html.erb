@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File:</strong>
+  <audio controls>
+    <source src="<%= @audio.id%>/file" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  
+</p>
+
+<p>
+  <strong>Medium:</strong>
+  <%= @audio.medium.nome %>
+</p>
+
+<%= link_to 'Edit', edit_audio_path(@audio) %> |
+<%= link_to 'Back', audios_path %>

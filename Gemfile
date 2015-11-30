@@ -30,6 +30,12 @@ gem 'language_list', '~> 1.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+#Uploader
+gem 'carrierwave', '~> 0.10'
+
+#Mongo gridfs
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

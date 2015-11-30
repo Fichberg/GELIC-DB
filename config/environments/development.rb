@@ -26,4 +26,11 @@ GELICDb::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  CarrierWave.configure do |config|
+  config.storage = :grid_fs
+  config.root = Rails.root.join('tmp')
+  config.cache_dir = "uploads"
+end
+  
 end

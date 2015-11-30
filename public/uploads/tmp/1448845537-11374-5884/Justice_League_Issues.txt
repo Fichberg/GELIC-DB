@@ -1,0 +1,31 @@
+Justice League Issues
+
+  Dúvidas
+    Devemos realmente usar o logo do D.J.?
+    "Tipo de caso" tem que ser "Caso" ou "Orientação", o que é "tipo de caso" hoje tem ue mudar de nome (Especialidade de Caso?)
+  
+  Layout
+    Aplicar bootstrap no login
+    Acertar o layout da página de modificar perfil
+    Padding errado na criação de calouro (provavelmente é o form de pessoa)
+    Melhorar a lista de relatos na edição de casos
+
+  Funcionalidades
+    Editar dados pessoais
+    Quando criar uma entidade qualquer, ir para a página com suas informações
+    Criar uma tela para buscas de casos com pesquisa para os estagiários
+
+  Erros
+    Erro na criação de estagiário
+    Não está mostrando o link para a lista de espera
+    Edição de Casos não funciona
+    Não deveria ser possível deletar um caso, apenas os diretores deveriam poder arquivá-los
+
+  Usabilidade
+    Símbolo de dinheiro na renda familiar no cadastro de cliente
+    "Categoria" de caso deveria ser "Status"
+    Acrescentar botões de voltar em basicamente todas as páginas
+
+  Testes
+    Popular o seed de desenvolvimento com dados básicos
+
