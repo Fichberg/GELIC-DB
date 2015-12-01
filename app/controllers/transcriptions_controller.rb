@@ -29,7 +29,7 @@ class TranscriptionsController < ApplicationController
     @transcription = Transcription.new(transcription_params)
 
     respond_to do |format|
-      if !transcription_params[:id_midia].empty? && !transcription_params[:id_cidade].empty?
+      if !transcription_params[:id_midia].empty? && !transcription_params[:id_cidade].empty? && !transcription_params[:codigo].nil?
         if @transcription.save && (Author.new(:email_membro => @current_user.email, :id_midia => @transcription.id_midia)).save
           format.html { redirect_to @transcription, notice: 'Transcription was successfully created.' }
           format.json { render action: 'show', status: :created, location: @transcription }
