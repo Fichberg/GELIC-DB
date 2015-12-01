@@ -6,6 +6,7 @@ class TranscriptionsController < ApplicationController
   def index
     @transcriptions = Transcription.all
     @authors = Author.all
+    @reviewers = Reviewer.all
   end
 
   # GET /transcriptions/1
@@ -58,6 +59,14 @@ class TranscriptionsController < ApplicationController
   # DELETE /transcriptions/1.json
   def destroy
     @author = Author.find_by(id_midia: @transcription.id_midia)
+    @reviewers = Reviewer.all
+
+    @reviewers.each do |rvwr|
+      if rvwr.id_midia == @transcription.id_midia
+        @reviewer = Reviewer.find_by(id_midia: rvwr.id_midia, email_membro: rvwr.email_membro)
+        @reviewer.destroy unless @reviewer.nil?
+      end
+    end
 
     @author.destroy
     @transcription.destroy
@@ -74,6 +83,10 @@ class TranscriptionsController < ApplicationController
       send_data content, type: @transcription.codigo.file.content_type, disposition: "inline"
       expires_in 0, public: true
     end
+  end
+
+  def all
+    @medium_reviewers = Reviewer.where(:id_midia => params[:id_midia])
   end
 
   private

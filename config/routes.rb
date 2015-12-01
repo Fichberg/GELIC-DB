@@ -14,6 +14,9 @@ GELICDb::Application.routes.draw do
   resources :transcriptions do
     get :file, on: :member
   end
+
+  resources :reviewers, path: '/transcriptions/:id_midia/reviewers', only: [:create]
+  get "/transcriptions/:id_midia/reviewers/all" => "transcriptions#all", as: :reviewers_all
   get '/' => 'home#index'
   resources :members, :id => /[^\/]+/
   resources :media, :id => /[^\/]+/

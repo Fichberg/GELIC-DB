@@ -16,6 +16,8 @@
     <tbody>
       <% @transcriptions.each do |transcription| %>
         <tr>
+          <% unreviewed_by_me = true %>
+          <% reviewed_by_someone = false %>
           <% @authors.each do |author| %>
             <% if author.id_midia == transcription.id_midia %>
               <td><%= author.email_membro %></td>
@@ -25,6 +27,17 @@
           <td><%= transcription.medium.nome %></td>
           <td><%= transcription.city.nome %></td>
           <td><%= link_to 'Show', transcription %></td>
+          <% @reviewers.each do |rvwr| %>
+            <% if rvwr.id_midia == transcription.id_midia %>
+              <% reviewed_by_someone = true %>
+                <% if rvwr.email_membro == @current_user.email %>
+                  <% unreviewed_by_me = false %>
+                  <% break %>
+                <% end %>
+            <% end %>
+          <% end %>
+          <td><%= link_to 'Mark as Reviewed', reviewers_path(transcription.id_midia), method: :create, data: { confirm: "Are you sure you want to mark #{transcription.medium.nome}\'s transcription as reviewed?" } if unreviewed_by_me %></td>
+          <td><%= link_to 'Show Reviewers', reviewers_all_path(transcription.id_midia) if reviewed_by_someone %></td>
           <% if @current_user.is_admin %>
             <td><%= link_to 'Edit', edit_transcription_path(transcription) %></td>
             <td><%= link_to 'Destroy', transcription, method: :delete, data: { confirm: 'Are you sure?' } %></td>

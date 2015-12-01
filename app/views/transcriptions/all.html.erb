@@ -1,0 +1,24 @@
+<h1>Reviewers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Reviewer Email</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @medium_reviewers.each do |reviewer| %>
+      <tr>
+        <td><%= reviewer.email_membro %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back', transcriptions_path %>
