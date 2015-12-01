@@ -57,6 +57,9 @@ class TranscriptionsController < ApplicationController
   # DELETE /transcriptions/1
   # DELETE /transcriptions/1.json
   def destroy
+    @author = Author.find_by(id_midia: @transcription.id_midia)
+
+    @author.destroy
     @transcription.destroy
     respond_to do |format|
       format.html { redirect_to transcriptions_url }
