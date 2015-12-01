@@ -5,11 +5,10 @@
   <thead>
     <tr>
       <th>Email</th>
-      <th>Senha</th>
-      <th>Nome</th>
+      <th>Name</th>
       <th>Login</th>
-      <th>Data criacao</th>
-      <th>Email admin</th>
+      <th>Creation Date</th>
+      <th>Email Creator Admin</th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,16 +19,17 @@
     <% @members.each do |member| %>
       <tr>
         <td><%= member.email %></td>
-        <td><%= member.senha %></td>
         <td><%= member.nome %></td>
         <td><%= member.login %></td>
         <td><%= member.data_criacao %></td>
         <td><%= member.email_admin %></td>
         <td><%= link_to 'Show', member %></td>
-        <% if @current_user.is_admin %>
+        <% if @current_user.is_admin || member.email.eql?(@current_user.email) %>
           <td><%= link_to 'Edit', edit_member_path(member) %></td>
-          <% unless member.is_admin %>
-            <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% unless member.is_admin  %>
+            <% if @current_user.is_admin %>
+              <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
           <% end %>
         <% end %>
       </tr>
